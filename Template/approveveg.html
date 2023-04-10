@@ -1,0 +1,67 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>approveusers</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px;
+}
+h1 {
+  color: blue;
+  font-family: verdana;
+  font-size: 300%;
+
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+</head>
+<body>
+<form action="{% url 'uapprove' %}">
+    {% csrf_token %}
+    <table >
+        <br/>
+        <h1 align="center">Approve Item Details</h1>
+        <br/>
+        <tr>
+            <th>Id</th>
+            <th>Owner Name</th>
+            <th>Vegetable Name</th>
+            <th>Category</th>
+            <th>Rate</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Stock</th>
+        </tr>
+        {% for i in key %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{i.name}}</td>
+            <td>{{ i.vegname }}</td>
+            <td>{{ i.cname }}</td>
+            <td>{{ i.rate }}</td>
+            <td><img src="/media/{{i.image}}" height="100" width="100"></td>
+            <td>{{ i.des }}</td>
+            <td>{{ i.stock }}</td>
+            <td><a href="{% url 'approvevegs' id=i.id %}" style="color:blue">Approve</a> </td><br>
+            <td><a href="{% url 'rejectveg' id=i.id %}" style="color:blue">Reject</a> </td><br>
+
+
+        </tr>
+        {% endfor %}
+
+
+    </table>
+</form>
+
+</body>
+</html>
+{% endblock %}

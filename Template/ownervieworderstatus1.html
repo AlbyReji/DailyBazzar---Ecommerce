@@ -1,0 +1,42 @@
+{% extends 'ownerhome.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+<table align="center">
+          <h3 class="title text-center mb-2">View Order Details</h3>
+    <tr>
+        <th>Id</th><th>Category</th><th>Item Name</th><th>Rate</th><th>Qty</th><th>Total</th><th>Status</th>
+    </tr>
+    {% for i in key %}
+    <tr>
+        <td>{{i.id}}</td><td>{{i.cname}}</td><td>{{i.vegname}}</td><td>{{i.rate}}</td><td>{{i.qty}}</td><td>{{i.total}}</td><td>{{i.status}}</td>
+
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+</form>
+</body>
+</html>
+{% endblock %}

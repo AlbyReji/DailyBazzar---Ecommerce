@@ -1,0 +1,47 @@
+{% extends 'userhome.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cart</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+<form method="post" action="{% url 'payment' %}">
+    {% csrf_token %}
+<table align="center">
+          <h3 class="title text-center mb-2">View Cart</h3>
+    <tr>
+        <th>Cart Id</th><th>Category</th><th>Item</th><th>Rate</th><th>Qty</th><th>Total</th><th>Booking Date</th><th></th>
+    </tr>
+{% for i in key %}
+    <tr>
+        <td>{{i.id}}</td><td>{{i.cname}}</td><td>{{i.vegname}}</td><td>{{i.rate}}</td><td>{{i.qty}}</td><td>{{i.total}}</td><td>{{i.bdate}}</td>
+        <td><a href="{% url 'deletecart' id=i.id">Delete</a> </td>
+    </tr>
+    {% endfor %}
+    <br/>
+<br/>
+    <tr>
+        {% for t in t %}
+<th><h3>Total Amount</h3></th><td><input type="text" value="{{t.tot}}" align="center" name="total"></td><td><input type="submit" value="Continue"></td>
+{% endfor %}
+    </tr>
+</table>
+</form>
+
+</body>
+</html>
+{% endblock %}

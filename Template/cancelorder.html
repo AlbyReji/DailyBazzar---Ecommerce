@@ -1,0 +1,39 @@
+{% extends 'userhome.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+
+<table align="center">
+          <h3 class="title text-center mb-2">View Order Details</h3>
+    <tr>
+        <th>Order Id</th><th>Date</th><th>Total Amount</th><th>Status</th>
+    </tr>
+    {% for i in key %}
+    <tr>
+        <td>{{i.id}}</td><td>{{i.odate}}</td><td>{{i.gtotal}}</td><td>{{i.status}}</td><td><a href="{% url 'cancelorder1' id=i.id %}">View Orders</a> </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'banking.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function validation()
+        {
+        if(document.frm.drpbname.value=="0")
+        {
+        alert("plz select bank name");
+
+        return false;
+        }
+        else if(document.frm.branch.value=="")
+        {
+        alert("plz enter branch");
+        document.frm.branch.focus();
+        return false;
+        }
+
+        else if(document.frm.addr.value=="")
+        {
+        alert("plz enter address");
+        document.frm.addr.focus();
+        return false;
+        }
+        else if(document.frm.ifsc.value=="")
+        {
+        alert("plz enter ifsc code");
+        document.frm.ifsc.focus();
+        return false;
+        }
+        else if(document.frm.phno.value=="")
+        {
+        alert("plz enter phone no");
+        document.frm.phno.focus();
+        return false;
+        }
+        else if(document.frm.email.value=="")
+        {
+        alert("plz enter emailid");
+        document.frm.email.focus();
+        return false;
+        }
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="{% url 'branch' %}" name="frm">
+    {% csrf_token %}
+    <table width="700">
+    <tr>
+        <td class="heading" colspan="3">Add BRANCH details</td>
+    </tr>
+    <tr>
+        <td width="100">&nbsp;</td>
+        <td width="150">&nbsp;</td>
+        <td width="450">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>Bank Name</td>
+        <td>
+           <select name="drpbname" class="textbox">
+
+               <option value="0">--select--</option>
+                {% for i in bank %}
+               <option value="{{ i.id }}">{{ i.bname }}</option>
+               {% endfor %}
+           </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>Branch</td>
+        <td>
+           <input type="text" name="branch" class="textbox" >
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>Address</td>
+        <td>
+            <input type="text" name="addr" class="textbox">
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>IFSC Code</td>
+        <td>
+            <input type="text" name="ifsc" class="textbox">
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>Phone</td>
+        <td>
+           <input type="text" name="phno" class="textbox">
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>Email ID</td>
+        <td>
+           <input type="text" name="email" class="textbox">
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>
+            <table width="450">
+                <tr>
+                    <td width="210">
+                        <input type="submit" value="ADD" class="button" onclick="return validation()">
+                    </td>
+                    <td width="30">&nbsp;</td>
+                    <td width="210">
+                        <input type="submit" value="CLEAR" class="button">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

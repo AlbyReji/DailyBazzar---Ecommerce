@@ -1,0 +1,245 @@
+{% extends 'banking.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript"  src="{% static 'jquery-3.4.1.js' %}" ></script>
+    <script type="text/javascript">
+     function validation()
+        {
+        if(document.frm.drpbank.value=="0")
+        {
+        alert("plz select bank name");
+
+        return false;
+        }
+        else if(document.frm.drpbranch.value=="0")
+        {
+        alert("plz select branch");
+
+        return false;
+        }
+
+        else if(document.frm.amount.value=="")
+        {
+        alert("plz enter amount");
+        document.frm.amount.focus();
+        return false;
+        }
+        else if(document.frm.cvv.value=="")
+        {
+        alert("plz enter cvv");
+        document.frm.cvv.focus();
+        return false;
+        }
+        else if(document.frm.cname.value=="")
+        {
+        alert("plz enter customer name");
+        document.frm.cname.focus();
+        return false;
+        }
+        else if(document.frm.cno.value=="")
+        {
+        alert("plz enter card no");
+        document.frm.cno.focus();
+        return false;
+        }
+        else if(document.frm.year.value=="0")
+        {
+        alert("plz select year");
+
+        return false;
+        }
+        else if(document.frm.month.value=="0")
+        {
+        alert("plz select month");
+
+        return false;
+        }
+        }
+         $(document).ready(function()
+          {
+                $('#bankid').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../brnch",
+      data:{ q : $(this).val()},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				 $('#branchid').empty();
+$.each(data, function(key, val)
+{
+//alert(key)
+                                var opt = $('<option />'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.branch);
+                                $('#branchid').append(opt); //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+                });
+            });
+
+    </script>
+</head>
+<body>
+<form method="post" action="{% url 'account' %}" name="frm">
+    {% csrf_token %}
+<table width="700">
+                <tr>
+                    <td class="heading" colspan="3">customer account</td>
+                </tr>
+                <tr>
+                    <td width="100">&nbsp;</td>
+                    <td width="150">&nbsp;</td>
+                    <td width="450">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Bank Name</td>
+                    <td>
+                      <select name="drpbank" id="bankid" class="textbox">
+                          <option value="0">--select--</option>
+                          {% for i in bank %}
+                          <option value="{{i.id}}">{{i.bname}}</option>
+                          {% endfor %}
+                      </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Branch</td>
+                    <td>
+                        <select name="drpbranch" id="branchid" class="textbox">
+                          <option value="0">--select--</option>
+                      </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Card No.</td>
+                    <td>
+                       <input type="text" name="cno" class="textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Card Holder</td>
+                    <td>
+                       <input type="text" name="cname" class="textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="2">
+                        <table width="600">
+                            <tr>
+                                <td width="190">CVV</td>
+                                <td width="15">&nbsp;</td>
+                                <td width="190">Expiry Month</td>
+                                <td width="15">&nbsp;</td>
+                                <td width="190">Expiry Year</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <input type="text" name="cvv" class="textbox">
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <select name="month" class="textbox">
+                                        <option value="0">--select--</option>
+                                        <option value="1">JAN</option>
+                                        <option value="2">FEB</option>
+                                        <option value="3">MAR</option>
+                                        <option value="4">APR</option>
+                                        <option value="5">MAY</option>
+                                        <option value="6">JUN</option>
+                                        <option value="7">JUL</option>
+                                        <option value="8">AUG</option>
+                                        <option value="9">SEP</option>
+                                        <option value="10">OCT</option>
+                                        <option value="11">NOV</option>
+                                        <option value="12">DEC</option>
+                                    </select>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <select class="textbox" name="year">
+                                        <option value="0">--select--</option>
+                                        <option value="1">2000</option>
+                                        <option value="2">2001</option>
+                                             <option value="3">2002</option>
+                                             <option value="4">2003</option>
+                                             <option value="5">2004</option>
+                                             <option value="6">2005</option>
+                                             <option value="7">2006</option>
+                                             <option value="8">2007</option>
+                                             <option value="9">2008</option>
+                                             <option value="10">2009</option>
+                                             <option value="11">2010</option>
+                                             <option value="12">2011</option>
+                                             <option value="13">2012</option>
+                                             <option value="14">2013</option>
+                                             <option value="15">2014</option>
+                                             <option value="16">2015</option>
+                                             <option value="17">2016</option>
+                                             <option value="18">2017</option>
+                                             <option value="19">2018</option>
+                                             <option value="20">2019</option>
+                                             <option value="21">2020</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Amount</td>
+                    <td>
+                        <input type="text" name="amount" class="textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <table width="450">
+                            <tr>
+                                <td width="210">
+                                   <input type="submit" value="ADD" class="button" onclick="return validation()">
+                                </td>
+                                <td width="30">&nbsp;</td>
+                                <td width="210">
+                                    <input type="submit" value="CLEAR" class="button">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+    </form>
+</body>
+</html>
+{% endblock %}

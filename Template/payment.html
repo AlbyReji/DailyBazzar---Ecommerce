@@ -1,0 +1,166 @@
+{% extends 'paymenthome.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function validation()
+        {
+if(document.frm.cno.value=="")
+        {
+        alert("plz enter card no");
+        document.frm.cno.focus();
+        return false;
+        }
+        else if(document.frm.year.value=="0")
+        {
+        alert("plz select year");
+
+        return false;
+        }
+        else if(document.frm.month.value=="0")
+        {
+        alert("plz select year");
+
+        return false;
+        }
+        }
+    </script>
+</head>
+<body>
+<form method="post" name="frm" action="{% url 'paymentcon' %}">
+    {% csrf_token %}
+     <table width="700">
+
+{{id}}
+
+                <tr>
+                    <td class="heading" colspan="3" >Add Card Details</td>
+                </tr>
+                <tr>
+                    <td width="100">&nbsp;</td>
+                    <td width="150">&nbsp;</td>
+                    <td width="450">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Card No</td>
+                    <td>
+                     <input type="text" name="cno" class="textbox">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Cvv</td>
+                    <td>
+                        <input type="text" name="cvv" class="textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="2">
+                        <table width="600">
+                            <tr>
+
+                                <td width="15">&nbsp;</td>
+                                <td width="190">Expiry Month</td>
+                                <td width="15">&nbsp;</td>
+                                <td width="190">Expiry Year</td>
+                            </tr>
+                            <tr>
+
+                                <td>&nbsp;</td>
+                                <td>
+                                    <select name="month" class="textbox">
+                                        <option value="0">--select--</option>
+                                        <option value="1">JAN</option>
+                                        <option value="2">FEB</option>
+                                        <option value="3">MAR</option>
+                                        <option value="4">APR</option>
+                                        <option value="5">MAY</option>
+                                        <option value="6">JUN</option>
+                                        <option value="7">JUL</option>
+                                        <option value="8">AUG</option>
+                                        <option value="9">SEP</option>
+                                        <option value="10">OCT</option>
+                                        <option value="11">NOV</option>
+                                        <option value="12">DEC</option>
+                                    </select>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <select class="textbox" name="year">
+                                        <option value="0">--select--</option>
+                                        <option value="1">2000</option>
+                                        <option value="2">2001</option>
+                                             <option value="3">2002</option>
+                                             <option value="4">2003</option>
+                                             <option value="5">2004</option>
+                                             <option value="6">2005</option>
+                                             <option value="7">2006</option>
+                                             <option value="8">2007</option>
+                                             <option value="9">2008</option>
+                                             <option value="10">2009</option>
+                                             <option value="11">2010</option>
+                                             <option value="12">2011</option>
+                                             <option value="13">2012</option>
+                                             <option value="14">2013</option>
+                                             <option value="15">2014</option>
+                                             <option value="16">2015</option>
+                                             <option value="17">2016</option>
+                                             <option value="18">2017</option>
+                                             <option value="19">2018</option>
+                                             <option value="20">2019</option>
+                                             <option value="21">2020</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+         <tr>
+             <td></td><td></td><td></td>
+         </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                         <input type="submit" value="Proceed" class="button" onclick="return validation()">
+                       <!-- <table width="450">
+                            <tr>
+                                <td width="210">
+
+                                </td>
+                                <td width="30">&nbsp;</td>
+                                <td width="210">
+                                    <input type="submit" value="Clear" class="button">
+                                </td>
+                            </tr>
+                        </table>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="vertical-align:top;text-align:center;">
+
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+
+</form>
+</body>
+</html>
+{% endblock %}

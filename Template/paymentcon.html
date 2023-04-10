@@ -1,0 +1,40 @@
+{% extends 'paymenthome.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'savepayment' %}">
+    {% csrf_token %}
+    <table width="700">
+                <tr>
+                    <td class="heading" colspan="3" >View Card Details</td>
+                </tr>
+                <tr>
+                    <td width="100">&nbsp;</td>
+                    <td width="150">&nbsp;</td>
+                    <td width="450">&nbsp;</td>
+                </tr>
+        <tr>
+            <td></td>
+            <th>CardHolder Name </th><td>{{card.cname}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <th>Balance</th><td>{{card.amount}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <th>Amount To Be Pay</th><td>{{sum}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Finish">  </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+{% endblock %}

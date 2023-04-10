@@ -1,0 +1,109 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% extends 'ownerhome.html' %}
+{% block content %}
+{% load static %}
+<html>
+<head>
+<title>Haunt Signup Form Responsive Widget Template | Home :: w3layouts</title>
+    <style>
+     .abc   {
+
+    width:100%;
+    font-size: 15px;
+    padding: 15px 10px;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    outline: none;
+    color: #fff;
+    text-align: left;
+    letter-spacing: 2px;
+	border-radius:5px;
+	background-color: transparent;
+}
+.cls{
+color:black;
+}
+    </style>
+                	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+</head>
+<body>
+<h1 align="center"><span style="color:red">A</span>dd <span style="color:red">I</span>tem <span style="color:red">D</span>etails</h1>
+<div class="container" align="center">
+<form action="{% url 'veg' %}" method="post" enctype="multipart/form-data" name="form1">
+	{% csrf_token %}
+
+<div class="agile_ihj">
+
+<div class="clear"></div>
+</div>
+<div class="w3l_o">
+
+</div>
+<div class="agileinfo">
+<input type="text" name="vegname" placeholder="Item Name" required="" onchange="return fn_allLetter(document.form1.vegname);">
+</div>
+<div class="agileinfo">
+
+    <select name="category" ><option value="">Category</option>
+    {% for i in key %}
+    <option value="{{ i.id }}" style="color:black">{{ i.cname }}</option>
+    {% endfor %}</select>
+</div>
+    <div class="agileinfo">
+<input type="text" name="rate" placeholder="Rate" required="" onchange="return fn_checknumber(document.form1.rate);">
+</div>
+    <div class="agileinfo" >
+<input type="file" name="image" placeholder="Image" required="" class="abc" align="center">
+</div>
+    <div class="agileinfo">
+<input type="text" name="description" placeholder="Description" required="">
+</div>
+    <div class="agileinfo">
+<input type="text" name="stock" placeholder="Stock" required="" onchange="return fn_checknumber(document.form1.stock);">
+</div>
+
+
+
+<div class="w3l_but">
+<button type="submit">REGISTER</button>
+</div>
+</form>
+<div class="wthree_down">
+
+</div>
+<div class="w3agile_side">
+<div class="main">
+
+</div>
+<!-- popup form #1 -->
+<!--<a href="#x" class="overlay" id="login_form"></a>
+   <div class="popup">
+     <h2>Welcome</h2>
+     <p>Please enter your Username and Password here</p>
+	 <form action="{% url 'ureg' %}" method="post">
+       {% csrf_token %}
+   <div>
+      <input type="text" name="name" placeholder="Username" required="">
+   </div>
+   <div>
+
+   <input type="password" name="name" placeholder="Password" required="">
+   </div>
+   <a href="#"><input type="submit" value="LOGIN" /></a>
+   <a class="close" href="#close"></a>
+   </form>
+</div>
+</div>
+<div class="clear"></div>
+</div>-->
+<div class="footer">
+ </div>
+</body>
+</html>
+{% endblock %}

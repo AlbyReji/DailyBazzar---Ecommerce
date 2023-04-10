@@ -1,0 +1,123 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<html>
+<head>
+<title>Staff Registraion</title>
+    <style>
+     .abc   {
+
+    width:100%;
+    font-size: 15px;
+    padding: 15px 10px;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    outline: none;
+    color: #fff;
+    text-align:left;
+    letter-spacing: 2px;
+	border-radius:5px;
+	background-color: transparent;
+}
+.cls{
+color:black;
+}
+    </style>
+                	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="Haunt Signup Form Responsive, Signup form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<link href="{% static 'reg/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'reg/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:400,600,700" rel="stylesheet">
+</head>
+<body style="color:white;">
+<h1>Add Deliverer Details</h1>
+<div class="container">
+<form action="{% url 'staff' %}" method="post" name="form1">
+	{% csrf_token %}
+<h2>Register Here</h2>
+<div class="agile_ihj">
+
+<div class="clear"></div>
+</div>
+<div class="w3l_o">
+
+</div>
+<div class="agileinfo">
+<input type="text" name="sname" placeholder=" Name" required="" onchange="return fn_allLetter(document.form1.sname);">
+</div>
+    <div class="agileinfo">
+
+            <table>
+                <tr>
+                    <td><input type="radio" name="gender" value="male" required="" >Male</td>
+        <td><input type="radio" name="gender"  value="female" required="">Female</td>
+                </tr>
+                </table>
+
+</div>
+<div class="agileinfo">
+<input type="text" name="designation" placeholder="Designation" required="" onchange="return fn_allLetter(document.form1.designation);">
+</div>
+
+
+
+
+    <div class="agileinfo">
+<input type="email" name="email" placeholder="Email" required="" onchange="return fn_checkemail(document.form1.email);">
+</div>
+    <div class="agileinfo">
+<input type="text" name="phone" placeholder="Phone No" required="" onchange="return fn_checkmobile(document.form1.phone);">
+</div>
+    <div class="agileinfo">
+<input type="text" name="uname" placeholder="User Name" required="">
+</div>
+<div class="agileinfo">
+<input type="Password" name="pwd" placeholder="Password" required="">
+</div>
+
+
+<div class="w3l_but">
+    <button type="submit" value="Register">REGISTER</button>
+</div>
+</form>
+<div class="wthree_down">
+
+</div>
+<div class="w3agile_side">
+<div class="main">
+
+</div>
+<!-- popup form #1 -->
+<!--<a href="#x" class="overlay" id="login_form"></a>
+   <div class="popup">
+     <h2>Welcome</h2>
+     <p>Please enter your Username and Password here</p>
+	 <form action="{% url 'ureg' %}" method="post">
+       {% csrf_token %}
+   <div>
+      <input type="text" name="name" placeholder="Username" required="">
+   </div>
+   <div>
+
+   <input type="password" name="name" placeholder="Password" required="">
+   </div>
+   <a href="#"><input type="submit" value="LOGIN" /></a>
+   <a class="close" href="#close"></a>
+   </form>
+</div>
+</div>
+<div class="clear"></div>
+</div>-->
+<div class="footer">
+ <p>&copy; 2018. All Rights Reserved</p>
+ </div>
+</body>
+</html>

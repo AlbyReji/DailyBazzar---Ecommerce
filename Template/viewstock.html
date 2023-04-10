@@ -1,0 +1,39 @@
+{% extends 'ownerhome.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stock</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+
+<table align="center">
+          <h3 class="title text-center mb-2">View Stock</h3>
+    <tr>
+        <th>Veg Id</th><th>Name</th><th>Stock</th>
+    </tr>
+    {% for i in k %}
+    <tr>
+        <td>{{i.id}}</td><td>{{i.vegname}}</td><td>{{i.st}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
+{% endblock %}

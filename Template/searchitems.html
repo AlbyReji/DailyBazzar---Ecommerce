@@ -1,0 +1,65 @@
+{% extends 'userhome.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'index/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all">
+  <!--//booststrap end-->
+  <!-- font-awesome icons -->
+  <link href="{% static 'index/css/font-awesome.min.css' %}" rel="stylesheet">
+  <!-- //font-awesome icons -->
+  <!--stylesheets-->
+  <link href="{% static 'index/css/style.css' %}" rel='stylesheet' type='text/css' media="all">
+</head>
+<body>
+
+<form >
+    {% csrf_token %}
+ <section class="service py-lg-4 py-md-4 py-sm-3 py-3" id="service">
+    <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+      <h3 class="title text-center mb-2">Search Items</h3>
+      <div class="title-w3ls-text text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">
+        <p>
+        </p>
+      </div>
+
+
+      <div class="row">
+
+{% for i in key %}
+        <div class="col-lg-4 col-md-6 col-sm-6 ser-icon text-center my-3">
+          <div class="grid-wthree-service">
+            <img src="/media/{{i.image}}" alt="news image" class="img-fluid">
+            <div class="ser-text-wthree mt-3">
+              <h4>
+
+              </h4>
+              <p class="mt-2" style="color:red;">
+                 <ul>
+                <li>Item Name : {{i.vegname}}</li>
+                <li>Category : {{i.cname}} </li>
+                <li>Rate : {{i.rate}}</li>
+                <li>Stock : {{i.st}}</li>
+                <li><a href="{% url 'searchitems1' id=i.id %}">Select</a> </li>
+
+            </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+{% endfor %}
+
+      </div>
+
+    </div>
+  </section>
+</form>
+</body>
+</html>
+{% endblock %}

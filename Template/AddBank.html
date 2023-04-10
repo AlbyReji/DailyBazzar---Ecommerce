@@ -1,0 +1,95 @@
+{% extends 'banking.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function validation()
+        {
+        if(document.frm.bname.value=="")
+        {
+        alert("plz enter bank name");
+        document.frm.bname.focus()
+        return false;
+        }
+        else if(document.frm.logo.value=="")
+        {
+         alert("plz select logo");
+
+        return false;
+        }
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="{% url 'bank' %}" enctype="multipart/form-data" name="frm">
+    {%csrf_token %}
+     <table width="700">
+                <tr>
+                    <td class="heading" colspan="3" >add bank details</td>
+                </tr>
+                <tr>
+                    <td width="100">&nbsp;</td>
+                    <td width="150">&nbsp;</td>
+                    <td width="450">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Bank Name</td>
+                    <td>
+                     <input type="text" name="bname" class="textbox">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Bank Logo</td>
+                    <td>
+                        <input type="file" name="logo" class="textbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                         <input type="submit" value="Add" class="button" onclick="return validation()">
+                       <!-- <table width="450">
+                            <tr>
+                                <td width="210">
+
+                                </td>
+                                <td width="30">&nbsp;</td>
+                                <td width="210">
+                                    <input type="submit" value="Clear" class="button">
+                                </td>
+                            </tr>
+                        </table>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="vertical-align:top;text-align:center;">
+
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+</form>
+</body>
+</html>
+{% endblock %}

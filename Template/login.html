@@ -1,0 +1,44 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<html>
+
+<head>
+<title> Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content=" Master  Login Form Widget Tab Form,Login Forms,Sign up Forms,Registration Forms,News letter Forms,Elements"/>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'log/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Cormorant+SC:300,400,500,600,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+</head>
+
+<body>
+	<div class="padding-all">
+		<div class="header">
+			<h1> Login Form</h1>
+		</div>
+
+		<div class="design-w3l">
+			<div class="mail-form-agile">
+				<form action="{% url 'login1' %}" method="post">
+					{% csrf_token %}
+					<input type="text" name="uname" placeholder="User Name  or  email..." required=""/>
+					<input type="password"  name="password" class="padding" placeholder="Password" required=""/>
+					<input type="submit" value="login">
+				</form>
+			</div>
+			<div class="clear"> <a href="{% url 'index' %}">Home</a></div>
+		</div>
+		
+		<div class="footer">
+		<p>© 2020 Login form. All Rights Reserved  <a href="https://w3layouts.com/" >   </a></p>
+		</div>
+	</div>
+</body>
+</html>

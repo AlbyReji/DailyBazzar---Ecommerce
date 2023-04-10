@@ -1,0 +1,48 @@
+{% extends 'admin.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>category</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+h1 {
+  color: blue;
+  font-family: verdana;
+  font-size: 300%;
+
+}
+</style>
+            	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+</head>
+<body>
+<form method="post" action="{% url 'category' %}" name="form1">
+    {% csrf_token %}
+    <table align="center">
+        <h1 align="center">Add Category</h1>
+        <br/>
+        <tr>
+            <td>Category</td>
+            <td><input type="text" name="cname" required onchange="return fn_allLetter(document.form1.cname);"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
+{% endblock %}
